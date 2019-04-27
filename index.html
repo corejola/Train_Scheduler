@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Scheduler</title>
+    <link rel="stylesheet" type=text/css href="assets/css/style.css">
+    <link rel="stylesheet" href="text/css" href="assets/css/reset.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <!--Larger header starts here-->
+        <div class="jumbotron">
+            <h1 class="display-4">Train Schedule Manager</h1>
+            <p class="lead">Add Train information for schedule management</p>
+            <hr class="my-4">
+
+        </div>
+
+        <!--Table starts here-->
+        <table class="table table-sm main-table">
+            <thead>
+                <tr>
+                    <th scope="col">Train</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Frequency (min)</th>
+                    <th scope="col">Next Arrival</th>
+                    <th scope="col">Minutes to Arrival (min)</th>
+                    <th scope="col">Next Train to Arrive</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <!-- <tr>
+                    <th scope="row">Person 1</th>
+                    <td id="role">CFO</td>
+                    <td id="startDate">04/22/2011</td>
+                    <td id="monthsWorkd">Calculated Field</td>
+                    <td id="monthlyRate">1000</td>
+                    <td id="totalBilled">Calculated Field</td>
+                </tr> -->
+
+            </tbody>
+        </table>
+        <br>
+
+        <br><br>
+        <div class="col-lg-12">
+
+            <div class="card card-default">
+                <div class="card-header">
+                    Add Train Service
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Train Name</label>
+                            <input type="text" class="form-control" id="trainInput" placeholder="C Train">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Destination</label>
+                            <input type="text" class="form-control" id="destInput" placeholder="Downtown Brookln">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput3">First Train Time (HH:mm - military time)</label>
+                            <input type="time" class="form-control" id="timeInput" placeholder="HHmm">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput4">Frequency (min)</label>
+                            <input type="number" class="form-control" id="frequency" placeholder="60">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-2" id="addTrain">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+
+</html>
