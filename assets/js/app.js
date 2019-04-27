@@ -45,6 +45,7 @@ $(document).ready(function () {
         startTime = $('#timeInput').val().trim();
         frequency = $('#frequency').val();
         //push train information into database
+
         database.ref().push({
             train: train,
             dest: dest,
@@ -62,25 +63,33 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snapshot) {
         // storing the snapshot.val() in a variable for convenience
         var sv = snapshot.val();
-        console.log(sv)
-        // console.log(sv.role)
-        // console.log(sv.startDate)
-        // console.log(sv.monthlyRate)
+        // console.log(sv)
+        // console.log(sv.train)
+        // console.log(sv.dest)
+        // console.log(sv.startTime)
+        // console.log(sv.frequency)
 
-        // month's worked is today's date minus start date
+        var convertedTime = moment(sv.startTime, "hh:mm").subtract(1, "years");
+        console.log(convertedTime)
 
-        // var dateFormat = moment(sv.startDate).format("MM/DD/YYYY");
-        // console.log(dateFormat);
-        // var monthsWorked = moment().diff(sv.startDate, 'M');
-        // console.log(monthsWorked)
+        var diffTime = moment().diff(convertedTime, "minutes");
+        console.log("DIFFERENCE IN TIME: " + diffTime);
+
+        var timeRemainder = diffTime % sv.frequency;
+        console.log(timeRemainder)
+
+        var timeNextTrain = sv.frequency - timeRemainder;
+        console.log(timeNextTrain)
+
+        var nextTrain = moment().add(timeNextTrain, "minutes")
+        console.log(nextTrain)
 
         var tRow = $('<tr>').append(
             $('<th>').text(sv.train),
             $('<td>').text(sv.dest),
             $('<td>').text(sv.frequency + " mins"),
-            $('<td>').text(sv.startTime),
-            $('<td>').text("TBD"),
-            $('<td>').text("TBD"),
+            $('<td>').text(nextTrain.format("hh:mm a")),
+            $('<td>').text(timeNextTrain + " mins"),
         );
 
         $('.main-table > tbody').append(tRow)
