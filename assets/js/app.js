@@ -34,6 +34,8 @@ $(document).ready(function () {
     var dest = "";
     var startTime = "";
     var frequency = 0;
+    var currentTime = moment().format("hh:mm:ss a");
+    // console.log(currentTime)
 
     $(document).on("click", "#addTrain", function () {
         event.preventDefault();
@@ -51,13 +53,40 @@ $(document).ready(function () {
         });
 
         // form reset
-        $('#name-input').val("");
-        $('#role-input').val("");
-        $('#start-date-input').val("");
-        $('#monthly-rate').val("");
+        $('#trainInput').val("");
+        $('#destInput').val("");
+        $('#timeInput').val("");
+        $('#frequency').val("");
     });
 
+    database.ref().on("child_added", function (snapshot) {
+        // storing the snapshot.val() in a variable for convenience
+        var sv = snapshot.val();
+        console.log(sv)
+        // console.log(sv.role)
+        // console.log(sv.startDate)
+        // console.log(sv.monthlyRate)
 
+        // month's worked is today's date minus start date
 
+        // var dateFormat = moment(sv.startDate).format("MM/DD/YYYY");
+        // console.log(dateFormat);
+        // var monthsWorked = moment().diff(sv.startDate, 'M');
+        // console.log(monthsWorked)
+
+        var tRow = $('<tr>').append(
+            $('<th>').text(sv.train),
+            $('<td>').text(sv.dest),
+            $('<td>').text(sv.frequency + " mins"),
+            $('<td>').text(sv.startTime),
+            $('<td>').text("TBD"),
+            $('<td>').text("TBD"),
+        );
+
+        $('.main-table > tbody').append(tRow)
+
+    });
+
+    $('#currentTime').text(currentTime)
 });
 
