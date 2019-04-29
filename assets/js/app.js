@@ -13,7 +13,6 @@
 //3.1.D Next arrival - converted to 13hr time
 //3.1.E Minutes to Arrival - calculated value
 //3.1.F Next Train Arrival Time - determined based on the frequency
-//3.2
 
 $(document).ready(function () {
 
@@ -34,8 +33,6 @@ $(document).ready(function () {
     var dest = "";
     var startTime = "";
     var frequency = 0;
-    var currentTime = moment().format("hh:mm:ss a");
-    // console.log(currentTime)
 
     $(document).on("click", "#addTrain", function () {
         event.preventDefault();
@@ -70,19 +67,19 @@ $(document).ready(function () {
         // console.log(sv.frequency)
 
         var convertedTime = moment(sv.startTime, "hh:mm").subtract(1, "years");
-        console.log(convertedTime)
+        // console.log(convertedTime)
 
         var diffTime = moment().diff(convertedTime, "minutes");
-        console.log("DIFFERENCE IN TIME: " + diffTime);
+        // console.log(diffTime);
 
         var timeRemainder = diffTime % sv.frequency;
-        console.log(timeRemainder)
+        // console.log(timeRemainder)
 
         var timeNextTrain = sv.frequency - timeRemainder;
-        console.log(timeNextTrain)
+        // console.log(timeNextTrain)
 
-        var nextTrain = moment().add(timeNextTrain, "minutes")
-        console.log(nextTrain)
+        var nextTrain = moment().add(timeNextTrain, "minutes");
+        // console.log(nextTrain)
 
         var tRow = $('<tr>').append(
             $('<th>').text(sv.train),
@@ -96,6 +93,13 @@ $(document).ready(function () {
 
     });
 
-    $('#currentTime').text(currentTime)
+
+    // console.log(currentTime)
+    function currentTimeDisplay() {
+        $('#currentTime').html(moment().format("hh:mm:ss a"));
+    }
+
+    setInterval(currentTimeDisplay, 1000);
+
 });
 

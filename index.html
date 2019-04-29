@@ -20,22 +20,23 @@
 <body>
     <div class="container">
         <!--Larger header starts here-->
-        <div class="jumbotron">
+        <div class="jumbotron bg-info text-white">
             <h1 class="display-4">Train Schedule Manager</h1>
             <p class="lead">Add Train information for schedule management</p>
             <hr class="my-4">
 
         </div>
 
-        <div class="card card-default">
+        <div class="card card-default bg-info text-white">
             <div class="card-header">
                 Current Time: <span id="currentTime"></span>
             </div>
         </div>
         <br>
         <!--Table starts here-->
-        <table class="table table-sm main-table">
-            <thead class="card-header">
+        <table class="table table-sm main-table ">
+
+            <thead class="card-header bg-info text-white">
                 <tr>
                     <th scope="col">Train</th>
                     <th scope="col">Destination</th>
@@ -46,13 +47,15 @@
             </thead>
             <tbody class="tbody">
             </tbody>
+
         </table>
+
         <br>
 
         <br><br>
 
         <div class="card card-default">
-            <div class="card-header">
+            <div class="card-header bg-secondary text-white">
                 Add Train Service
             </div>
             <div class="card-body">
@@ -67,7 +70,7 @@
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput3">First Train Time (HH:mm - military time)</label>
-                        <input type="text" class="form-control" id="timeInput" placeholder="HHmm">
+                        <input type="text" class="form-control" id="timeInput" placeholder="0300">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput4">Frequency (min)</label>
